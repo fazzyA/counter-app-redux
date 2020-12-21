@@ -1,9 +1,9 @@
-import { addtodo, deletetodo } from './Actions'
+import { addtodo, deletetodo,edittodo } from './Actions'
 
 const initialState = [
-    { title: 'todo 1', id: 1 },
-    { title: 'todo 2', id: 2 },
-    { title: 'todo 3', id: 3 },
+    { title: 'todo 1', id: 11 },
+    { title: 'todo 2', id: 21 },
+    { title: 'todo 3', id: 31 },
 ]
 
 export default function TodoReducer(state = initialState, action) {
@@ -16,8 +16,21 @@ export default function TodoReducer(state = initialState, action) {
         case deletetodo:
             console.log(action.payload)
             let newState = state.filter(
-                (item)=>item.id!=action.payload)
+                (item) => item.id != action.payload)
             return [...newState]
+
+            break;
+
+        case edittodo:
+            console.log(action.payload.id)
+             let index=state.findIndex((item)=>item.id == action.payload.id)
+            // console.log('item arr index',index)
+            let newState1 = [...state]
+            newState1[index].title=action.payload.txt
+            
+
+            return newState1
+            
 
             break;
 

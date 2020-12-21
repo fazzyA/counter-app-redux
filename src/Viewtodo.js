@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import {useSelector} from 'react-redux'
 import {useDispatch} from 'react-redux'
-import { deleteTodoAction } from './store/Actions'
+import { deleteTodoAction, edittodoAction } from './store/Actions'
 
 function Viewtodo() {
     const [title, settitle] = useState('')
@@ -15,14 +15,19 @@ function Viewtodo() {
         settitle(e.target.value)
 
     }
+    const handleEdit=(id)=>{
+        const txt = prompt('dsaas')
+        dispatch(edittodoAction(id,txt))
+
+    }
     return (
         <div>{title}
             {
                 state.map((item)=>(
                     <div>
-                    <input name='text' key={item.id} value={item.title} onChange={handleChange}/>
-                    &nbsp;  
-                    <button onClick={handleEdit}>Edit</button>    
+                        {item.title}
+                    
+                    <button onClick={()=>handleEdit(item.id)}>Edit</button>    
                     <button style={{}} 
                     onClick={()=>handleDelete(item.id)}>del</button>
                     </div>
