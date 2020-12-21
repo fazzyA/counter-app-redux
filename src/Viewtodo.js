@@ -27,6 +27,7 @@ function Viewtodo() {
                     onClick={()=>handleDelete(item.id)}>del</button>
                     </div>
                 ))
+                //sdadas
             }
         </div>
     )
